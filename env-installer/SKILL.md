@@ -111,3 +111,18 @@ official: false
 2. 使用 `python -m pip` 代替直接使用 `pip`
 3. 在 Windows 上可能需要重新安装 Python 并勾选 "Add to PATH"
 4. 或者手动配置环境变量
+
+### 解决 Winget 安装失败
+
+如果遇到 `winget install` 失败：
+
+1. **源证书问题**：msstore（微软商店）源可能会出现证书验证失败
+   - 使用 `winget source remove --name msstore` 移除该源
+   - 使用 `winget install --id Python.Python.3.12 --source winget --force` 指定 winget 源
+
+2. **权限问题**：需要管理员权限
+   - 在 PowerShell 中使用 `Start-Process winget -Verb RunAs` 以管理员身份运行
+
+3. **超时或网络问题**：直接使用官方下载
+   - Python 官方下载地址：https://www.python.org/downloads/
+   - 下载后运行安装程序，并确保勾选 "Add Python to PATH"
