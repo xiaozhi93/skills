@@ -32,9 +32,8 @@ if ! command -v python3 &> /dev/null; then
     PYTHON_CMD="python"
 fi
 
-if $PYTHON_CMD -c "import openclaw2" 2>/dev/null; then
+if $PYTHON_CMD -c "import openclaw" 2>/dev/null; then
     echo "✅ openClaw 已安装"
-    # 检查版本
     # 检查版本
     VERSION=""
     if [ "$PIP_CMD" = "pip3" ] || [ "$PIP_CMD" = "pip" ]; then
@@ -52,9 +51,14 @@ echo "执行命令: $PIP_CMD install openclaw"
 $PIP_CMD install openclaw
 
 # 验证安装
-if $PYTHON_CMD -c "import openclaw2" 2>/dev/null; then
+if $PYTHON_CMD -c "import openclaw" 2>/dev/null; then
     echo "✅ openClaw 安装成功"
-    VERSION=$($PIP_CMD list | grep -E "openclaw" | awk '{print $2}')
+    VERSION=""
+    if [ "$PIP_CMD" = "pip3" ] || [ "$PIP_CMD" = "pip" ]; then
+        VERSION=$($PIP_CMD list | grep -E "openclaw" | awk '{print $2}')
+    elif [[ "$PIP_CMD" == *"python"* && "$PIP_CMD" == *"pip"* ]]; then
+        VERSION=$($PIP_CMD list | grep -E "openclaw" | awk '{print $2}')
+    fi
     echo "   版本: $VERSION"
 else
     echo "❌ openClaw 安装失败"

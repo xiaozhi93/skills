@@ -49,7 +49,7 @@ fi
 if ! $PYTHON_CMD --version 2>&1 >/dev/null; then
     echo "❌ Python 命令无法执行（Windows应用商店版本需要安装）"
 else
-    if $PYTHON_CMD -c "import openclaw2" 2>/dev/null; then
+    if $PYTHON_CMD -c "import openclaw" 2>/dev/null; then
         echo "✅ openClaw 已安装"
         # 检查版本
         PIP_CMD=""

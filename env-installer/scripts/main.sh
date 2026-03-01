@@ -33,10 +33,30 @@ else
 fi
 
 # 检查并安装 Python
-if ! (command -v python3 &> /dev/null || command -v python &> /dev/null); then
-    "$SCRIPT_DIR/install_python.sh"
+PYTHON_INSTALLED=false
+if (command -v python3 &> /dev/null || command -v python &> /dev/null); then
+    # 检查是否为 Windows 应用商店版本
+    if [ -f "/c/Users/Administrator/AppData/Local/Microsoft/WindowsApps/python.exe" ] || [ -f "/c/Users/Administrator/AppData/Local/Microsoft/WindowsApps/python3.exe" ]; then
+        echo "⚠️  检测到 Windows 应用商店版本的 Python"
+        echo "🔧 正在卸载 Windows 应用商店版本的 Python..."
+        "$SCRIPT_DIR/uninstall_python.sh"
+        # 检查是否成功卸载
+        if (command -v python3 &> /dev/null || command -v python &> /dev/null); then
+            echo "⚠️  无法完全卸载，请手动从 Windows 设置中卸载"
+            read -p "按回车键继续..."
+        else
+            echo "✅ 已成功卸载，现在安装官方版本..."
+            "$SCRIPT_DIR/install_python.sh"
+            PYTHON_INSTALLED=true
+        fi
+    else
+        echo "✅ Python 已安装（非 Windows 应用商店版本）"
+        PYTHON_INSTALLED=true
+    fi
 else
-    echo "✅ Python 已安装"
+    echo "📦 Python 未安装，正在安装..."
+    "$SCRIPT_DIR/install_python.sh"
+    PYTHON_INSTALLED=true
 fi
 
 # 检查并安装 openClaw

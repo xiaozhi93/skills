@@ -51,11 +51,11 @@ if ! command -v python3 &> /dev/null; then
     PYTHON_CMD="python"
 fi
 
-if $PYTHON_CMD -c "import openclaw2" 2>/dev/null; then
+if $PYTHON_CMD -c "import openclaw" 2>/dev/null; then
     echo "✅ openClaw 导入成功"
     # 测试基本功能
     if $PYTHON_CMD -c "
-from openclaw2 import OpenClaw
+from openclaw import OpenClaw
 print('✅ openClaw 库导入成功')
 " 2>/dev/null; then
         echo "✅ openClaw 功能正常"
