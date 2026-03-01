@@ -1,0 +1,41 @@
+# Ignore files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Python
+__pycache__/
+*.pyc
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Build
+dist/
+build/
+*.zip
+*.tar.gz
+
+# Temporary files
+.cowork-temp/
+*.tmp
+*.temp
+
+# MCP configuration
+.mcp/
+.mcp.config.json
+
+# Environment variables
+.env
+.env.local
+.env.*.local
