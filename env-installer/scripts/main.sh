@@ -39,6 +39,18 @@ else
     echo "✅ Python 已安装"
 fi
 
+# 检查并安装 openClaw
+PYTHON_CMD="python3"
+if ! command -v python3 &> /dev/null; then
+    PYTHON_CMD="python"
+fi
+
+if ! $PYTHON_CMD -c "import openclaw2" 2>/dev/null; then
+    "$SCRIPT_DIR/install_openclaw.sh"
+else
+    echo "✅ openClaw 已安装"
+fi
+
 # 3. 测试环境
 echo ""
 echo "=== 步骤 3: 测试安装的环境 ==="

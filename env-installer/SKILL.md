@@ -20,6 +20,7 @@ official: false
 - **NVM** - Node版本管理器
 - **Node.js** - 稳定版本（LTS）
 - **Python** - 最新稳定版本
+- **openClaw** - AI代理编排库（Python）
 
 ### 扩展支持
 - Git
@@ -36,6 +37,7 @@ official: false
    - `node --version` - 检查Node.js
    - `python --version` 或 `python3 --version` - 检查Python
    - `git --version` - 检查Git
+   - `pip list | grep openclaw` - 检查openClaw
 
 ### 安装流程
 
@@ -57,6 +59,7 @@ official: false
 - Node.js：`node -e "console.log('Node.js is working')"`
 - Python：`python -c "print('Python is working')"`
 - Git：`git --version`
+- openClaw：`python -c "from openclaw2 import OpenClaw; print('openClaw is working')"`
 
 ## 脚本资源
 
@@ -71,6 +74,9 @@ official: false
 
 ### install_python.sh
 安装Python环境
+
+### install_openclaw.sh
+安装openClaw AI代理编排库
 
 ### test_env.sh
 测试已安装的环境
@@ -89,3 +95,19 @@ official: false
 - Windows系统可能需要重启终端或计算机
 - 网络连接问题可能导致安装失败
 - 安装过程中可能需要用户确认某些选项
+- **Windows 应用商店的 Python 问题**：
+  - 如果使用 Windows 应用商店的 Python，可能会遇到命令无法执行的问题
+  - 建议访问 https://www.python.org/downloads/ 下载官方 Python 安装程序
+  - 确保在安装时勾选 "Add Python to PATH" 选项
+  - 安装后重新打开终端
+
+## 常见问题
+
+### 解决 pip 安装失败
+
+如果遇到 `pip: command not found` 错误：
+
+1. 确保 Python 已正确安装并添加到 PATH
+2. 使用 `python -m pip` 代替直接使用 `pip`
+3. 在 Windows 上可能需要重新安装 Python 并勾选 "Add to PATH"
+4. 或者手动配置环境变量

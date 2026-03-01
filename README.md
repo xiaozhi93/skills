@@ -41,6 +41,7 @@ skills/
 - Node.js (LTS version)
 - Python (latest stable version)
 - Git
+- openClaw (AI代理编排库)
 
 ## Usage
 

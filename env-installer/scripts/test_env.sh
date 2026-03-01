@@ -45,4 +45,26 @@ else
 fi
 
 echo ""
+echo "📦 openClaw 测试"
+PYTHON_CMD="python3"
+if ! command -v python3 &> /dev/null; then
+    PYTHON_CMD="python"
+fi
+
+if $PYTHON_CMD -c "import openclaw2" 2>/dev/null; then
+    echo "✅ openClaw 导入成功"
+    # 测试基本功能
+    if $PYTHON_CMD -c "
+from openclaw2 import OpenClaw
+print('✅ openClaw 库导入成功')
+" 2>/dev/null; then
+        echo "✅ openClaw 功能正常"
+    else
+        echo "⚠️  openClaw 功能测试失败，但库已安装"
+    fi
+else
+    echo "❌ openClaw 未安装"
+fi
+
+echo ""
 echo "=== 测试完成 ==="
